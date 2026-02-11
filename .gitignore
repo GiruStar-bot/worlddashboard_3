@@ -1,0 +1,59 @@
+node_modules
+dist
+.env
+.DS_Store
+
+
+---
+
+## 3. GitHubへのプッシュ手順（コマンド）
+
+ターミナル（WindowsならPowerShellやGit Bash、Macならターミナル）を開き、プロジェクトフォルダに移動して以下のコマンドを順番に実行します。
+
+### ① ローカルリポジトリの初期化
+```bash
+git init
+
+
+② ファイルをステージングに追加
+
+git add .
+
+
+③ 初回コミット
+
+git commit -m "Initial commit: WorldDashboard base files"
+
+
+④ ブランチ名を main に設定
+
+git branch -M main
+
+
+⑤ リモートリポジトリの紐付け
+
+git remote add origin [https://github.com/GiruStar-bot/worlddashboard_3.git](https://github.com/GiruStar-bot/worlddashboard_3.git)
+
+
+⑥ GitHubへプッシュ
+
+git push -u origin main
+
+
+4. 注意点とアドバイス
+
+1. 拡張子の不整合について
+
+アップロードされた画像は cyberpunk-bg.jpg ですが、index.css 内では url('/cyberpunk-bg.png') となっています。プッシュ前に、CSS内の記述を画像ファイル名に合わせて修正してください。
+
+2. ライブラリのインストール
+
+プッシュ後に自分で動作確認をする場合は、以下のコマンドでライブラリをインストールしてください。
+
+npm install
+npm run dev
+
+
+3. エラーが出た場合
+
+もし git push でエラーが出る場合は、GitHubの個人アクセストークン（PAT）の設定が必要な場合があります。その際はまたお知らせください。

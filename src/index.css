@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Set a decorative background image that conveys the cyberpunk HUD theme.
+ * The image lives in the public folder and therefore is referenced with
+ * a root‑relative path.  A multiply blend mode with a dark colour tint
+ * ensures that foreground text remains legible.
+ */
+body {
+  background-image: url('/cyberpunk-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: multiply;
+}
+
+/*
+ * Custom component styles.
+ *
+ * The glassmorphic class applies a translucent background with a subtle blur
+ * and border, giving panels a futuristic frosted-glass appearance.  A
+ * slight drop shadow adds depth against the dark backdrop.
+ */
+@layer components {
+  .glassmorphic {
+    @apply bg-slate-800 bg-opacity-40 backdrop-blur-md border border-white/10 rounded-lg;
+    box-shadow: 0 0 12px 0 rgba(59, 130, 246, 0.15);
+  }
+}
