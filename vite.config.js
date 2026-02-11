@@ -1,17 +1,19 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// GitHub PagesのURLパスに合わせて 'base' を設定します。
-// https://<username>.github.io/<repository-name>/ の場合、
-// base は '/<repository-name>/' になります。
-
+// GitHub Pages デプロイ用の設定
 export default defineConfig({
   plugins: [react()],
-  base: '/worlddashboard_3/', // 追加：リポジトリ名に合わせる
+  // 重要: リポジトリ名に合わせてベースパスを設定
+  // これにより、/worlddashboard_3/assets/... という正しいパスでファイルを読み込みます
+  base: '/worlddashboard_3/', 
   server: {
     port: 5173,
   },
   build: {
     outDir: 'dist',
+    assetsDir: 'assets',
+    // ブラウザでのJSX実行エラーを避けるため、ビルドを安定させます
+    sourcemap: false,
   }
 });
