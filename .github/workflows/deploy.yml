@@ -1,4 +1,4 @@
-# .github/workflows/deploy.yml として保存してください
+# .github/workflows/deploy.yml
 name: Deploy to GitHub Pages
 
 on:
@@ -17,10 +17,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Set up Node
-        uses: actions/node-versions@v4
+        # 修正：正しいアクション名「setup-node」を使用します
+        uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: 'npm'
       - name: Install dependencies
+        # ここでリポジトリにない「nodesなんとか(node_modules)」を自動生成します
         run: npm install
       - name: Build
         run: npm run build
