@@ -18,13 +18,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up Node
-        # 修正: 正しいアクション名に変更し、エラーの原因となるキャッシュ機能を一時無効化
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          # ここにあった cache: 'npm' を削除しました（package-lock.jsonが無いため）
 
       - name: Install dependencies
-        # ここでリポジトリにない node_modules をクラウド上で自動生成します
         run: npm install
 
       - name: Build
