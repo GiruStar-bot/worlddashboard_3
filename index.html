@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Worlddashboard</title>
-    <!-- Import JetBrains Mono font -->
+    <!-- Import JetBrains Mono font for a digital, monospace feel on metrics -->
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
   </head>
   <body class="bg-slate-950 text-slate-200 antialiased">
     <div id="root"></div>
-    <!-- 修正: /src... ではなく ./src... とすることでサブディレクトリに対応します -->
-    <script type="module" src="./src/main.jsx"></script>
+    <!-- Viteの仕様通り、ルートからの絶対パスを指定します -->
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
