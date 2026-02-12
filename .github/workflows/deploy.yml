@@ -16,19 +16,23 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Set up Node
-        # 修正：正しいアクション名「setup-node」を使用します
+        # 修正: 正しいアクション名に変更し、エラーの原因となるキャッシュ機能を一時無効化
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
+
       - name: Install dependencies
-        # ここでリポジトリにない「nodesなんとか(node_modules)」を自動生成します
+        # ここでリポジトリにない node_modules をクラウド上で自動生成します
         run: npm install
+
       - name: Build
         run: npm run build
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
