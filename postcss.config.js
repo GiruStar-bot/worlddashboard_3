@@ -1,9 +1,8 @@
-// PostCSS configuration file used by Vite.  It simply declares the
-// Tailwind CSS and Autoprefixer plugins.
+// PostCSS configuration file used by Vite.
 
 module.exports = {
   plugins: {
-    '@tailwindcss/postcss': {},
+    tailwindcss: {},
     autoprefixer: {},
   },
 };
