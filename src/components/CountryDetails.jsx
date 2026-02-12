@@ -92,7 +92,8 @@ export default function CountryDetails({ country }) {
           value={`$${Math.round(perCapita).toLocaleString()}`}
         />
       </div>
-      <div className="flex-1">
+      {/* 修正ポイント: flex-1 に min-h-[200px] を追加して高さを安定させます */}
+      <div className="flex-1 min-h-[200px]">
         <ResponsiveContainer width="100%" height="100%">
           <RadarChart data={radarData} outerRadius="80%">
             <PolarGrid stroke="#334155" />
