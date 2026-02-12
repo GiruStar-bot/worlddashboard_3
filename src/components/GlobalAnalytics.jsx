@@ -99,71 +99,77 @@ export default function GlobalAnalytics({ data }) {
       <h3 className="text-lg font-semibold text-secondary">Global Analytics</h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* GDP Share Pie Chart */}
-        <div className="h-64 glassmorphic p-4">
+        {/* 修正ポイント: コンテナを flex flex-col にし、グラフ部分を flex-1 min-h-0 で囲みます */}
+        <div className="h-72 glassmorphic p-4 flex flex-col">
           <h4 className="text-sm font-medium mb-2">Global GDP Share</h4>
-          <ResponsiveContainer width="100%" height="100%">
-            <PieChart>
-              <Pie
-                data={pieData}
-                dataKey="value"
-                nameKey="name"
-                innerRadius={40}
-                outerRadius={80}
-                paddingAngle={3}
-                isAnimationActive={false}
-              >
-                {pieData.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={PIE_COLOURS[index % PIE_COLOURS.length]}
-                  />
-                ))}
-              </Pie>
-              <Legend
-                iconType="circle"
-                layout="vertical"
-                align="right"
-                verticalAlign="middle"
-                wrapperStyle={{ fontSize: '10px', color: '#cbd5e1' }}
-              />
-            </PieChart>
-          </ResponsiveContainer>
+          <div className="flex-1 min-h-0">
+            <ResponsiveContainer width="100%" height="100%">
+              <PieChart>
+                <Pie
+                  data={pieData}
+                  dataKey="value"
+                  nameKey="name"
+                  innerRadius={40}
+                  outerRadius={80}
+                  paddingAngle={3}
+                  isAnimationActive={false}
+                >
+                  {pieData.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={PIE_COLOURS[index % PIE_COLOURS.length]}
+                    />
+                  ))}
+                </Pie>
+                <Legend
+                  iconType="circle"
+                  layout="vertical"
+                  align="right"
+                  verticalAlign="middle"
+                  wrapperStyle={{ fontSize: '10px', color: '#cbd5e1' }}
+                />
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
         </div>
         {/* Scatter Chart for Correlation */}
-        <div className="h-64 glassmorphic p-4">
+        {/* 修正ポイント: 同様にコンテナとグラフ部分のレイアウトを安定させます */}
+        <div className="h-72 glassmorphic p-4 flex flex-col">
           <h4 className="text-sm font-medium mb-2">Economic Wealth vs Stability</h4>
-          <ResponsiveContainer width="100%" height="100%">
-            <ScatterChart
-              margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
-            >
-              <CartesianGrid stroke="#334155" strokeDasharray="3 3" />
-              <XAxis
-                type="number"
-                dataKey="x"
-                name="GDP per Capita"
-                domain={xDomain}
-                tickFormatter={(val) => `$${(val / 1000).toFixed(1)}k`}
-                tick={{ fill: '#cbd5e1', fontSize: 10 }}
-              />
-              <YAxis
-                type="number"
-                dataKey="y"
-                name="Stability Score"
-                domain={yDomain}
-                tick={{ fill: '#cbd5e1', fontSize: 10 }}
-              />
-              <ChartTooltip
-                cursor={{ strokeDasharray: '3 3' }}
-                wrapperStyle={{ backgroundColor: '#020617', border: '1px solid #334155', color: '#cbd5e1', fontSize: '10px' }}
-                formatter={(value, name) => [value.toFixed(2), name]}
-              />
-              <Scatter
-                name="Country"
-                data={scatterData}
-                fill="#8b5cf6"
-              />
-            </ScatterChart>
-          </ResponsiveContainer>
+          <div className="flex-1 min-h-0">
+            <ResponsiveContainer width="100%" height="100%">
+              <ScatterChart
+                margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
+              >
+                <CartesianGrid stroke="#334155" strokeDasharray="3 3" />
+                <XAxis
+                  type="number"
+                  dataKey="x"
+                  name="GDP per Capita"
+                  domain={xDomain}
+                  tickFormatter={(val) => `$${(val / 1000).toFixed(1)}k`}
+                  tick={{ fill: '#cbd5e1', fontSize: 10 }}
+                />
+                <YAxis
+                  type="number"
+                  dataKey="y"
+                  name="Stability Score"
+                  domain={yDomain}
+                  tick={{ fill: '#cbd5e1', fontSize: 10 }}
+                />
+                <ChartTooltip
+                  cursor={{ strokeDasharray: '3 3' }}
+                  wrapperStyle={{ backgroundColor: '#020617', border: '1px solid #334155', color: '#cbd5e1', fontSize: '10px' }}
+                  formatter={(value, name) => [value.toFixed(2), name]}
+                />
+                <Scatter
+                  name="Country"
+                  data={scatterData}
+                  fill="#8b5cf6"
+                />
+              </ScatterChart>
+            </ResponsiveContainer>
+          </div>
         </div>
       </div>
     </div>
