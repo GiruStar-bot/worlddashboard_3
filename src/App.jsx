@@ -313,7 +313,7 @@ export default function App() {
   const [hoverInfo, setHoverInfo] = useState(null);
 
   useEffect(() => {
-    fetch('/worlddash_global_master.json')
+    fetch('./worlddash_global_master.json')
       .then(res => res.json())
       .then(json => setData(json))
       .catch(err => console.error('Data Load Error', err));
