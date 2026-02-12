@@ -21,10 +21,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          # ここにあった cache: 'npm' を削除しました（package-lock.jsonが無いため）
+          # キャッシュ機能はロックファイルが無いため使用しません
 
       - name: Install dependencies
-        run: npm install
+        # 【重要な修正】ライブラリのバージョン競合を無視して強制インストールします
+        run: npm install --legacy-peer-deps
 
       - name: Build
         run: npm run build
